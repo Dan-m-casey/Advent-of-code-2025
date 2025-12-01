@@ -1,3 +1,5 @@
 import * as fs from 'fs';
 
-function readFile()
+export function readFile(s :string ){
+    return fs.readFileSync(s,'utf8');
+}
