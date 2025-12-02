@@ -1,7 +1,7 @@
 import {readFile} from '../tools/fileHandler'
 
 
-const data = readFile('./test-data');
+const data = readFile('./real-data');
 
 const seperate_data = data.split(',',-1);
 
@@ -44,18 +44,28 @@ function part2(){
         let e:number = +range[1];
         while (n <= e){
             let strNum = String(n);
-            for(let i = 1; i <= strNum.length;i++){
+            for(let i = 1; i <= strNum.length/2;i++){
                 if (strNum.length % i != 0)
                     continue;
                 let str1 = strNum.substring(0,i);
                 console.log(n);
                 console.log(str1);
 
+		let valid = false
                 for(let j = i; j < strNum.length; j += str1.length){
                     let str2 = strNum.substring(j,j+str1.length);
                     console.log(n + ": " + str1 + ": " + str2 );
-
+			if (str1 !== str2){
+				valid = true;
+				break;
+			}
+			
                 }
+		if (!valid){
+			console.log(n + "is invalid");
+			count += n;
+			break;
+		}
             }
             n++;
         }
