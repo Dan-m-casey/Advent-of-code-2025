@@ -59,7 +59,7 @@ function part2(){
 				valid = true;
 				break;
 			}
-			
+
                 }
 		if (!valid){
 			console.log(n + "is invalid");
